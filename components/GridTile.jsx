@@ -1,6 +1,6 @@
 import { Pressable, View, Text, StyleSheet, Platform } from "react-native";
 
-function GridTile({ title, color }) {
+function GridTile({ title, color, onPress }) {
   return (
     <View style={[styles.gridTile, { backgroundColor: color }]}>
       <Pressable
@@ -9,6 +9,7 @@ function GridTile({ title, color }) {
           styles.buttonTile,
           pressed ? styles.buttonPressed : null,
         ]}
+        onPress={onPress}
       >
         <View style={styles.innerContainer}>
           <Text style={styles.title}>{title}</Text>
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     elevation: 6,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
+    backgroundColor: "bisque",
   },
 
   buttonTile: {

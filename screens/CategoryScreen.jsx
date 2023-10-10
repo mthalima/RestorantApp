@@ -1,17 +1,22 @@
 import GridTile from "../components/GridTile";
 import { CATEGORIES } from "../data/dummy-data";
 import { FlatList } from "react-native";
+import MealInfoScreen from "./MealInfoScreen";
 
-function renderCategoryItem(itemData) {
-  return (
-    <GridTile
-      title={itemData.item.title}
-      color={itemData.item.color}
-    ></GridTile>
-  );
-}
+function CategoryScreen({ navigation }) {
+  function renderCategoryItem(itemData) {
+    function pressHandler() {
+      navigation.navigate("MealInfoScreen", { categoryId: itemData.item.id });
+    }
+    return (
+      <GridTile
+        title={itemData.item.title}
+        color="bisque"
+        onPress={pressHandler}
+      ></GridTile>
+    );
+  }
 
-function CategoryScreen() {
   return (
     <FlatList
       data={CATEGORIES}
